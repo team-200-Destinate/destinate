@@ -216,9 +216,128 @@ app.delete('/flight-confirmations/:id', (req, res) => {
   });
 });
 
+// -------------------------------------------------------------------------------------------------------
+// ---------------- Hotel ---------------------------------------------
+
+
+async function getCoordinates(city) {
+  const apiKey = 'AIzaSyCYT5U2bjcBd_bLJ_VVHQW9lvgvPgmmSQM';
+  const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(city)}&key=${apiKey}`;
+
+  try {
+    const response = await axios.get(geocodingUrl);
+    const { results } = response.data;
+
+    if (results.length > 0) {
+      const { lat, lng } = results[0].geometry.location;
+      return { latitude: lat, longitude: lng };
+    } else {
+      throw new Error('No results found for the city.');
+    }
+  } catch (error) {
+    throw new Error(`Error getting coordinates: ${error.message}`);
+  }
+}
+
+async function findHotels(city) {
+  try {
+    const { latitude, longitude } = await getCoordinates(city);
+
+    const apiKey = 'AIzaSyCYT5U2bjcBd_bLJ_VVHQW9lvgvPgmmSQM';
+    const placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=lodging&key=${apiKey}`;
+
+    const response = await axios.get(placesUrl);
+    const { results } = response.data;
+
+    if (results.length > 0) {
+      const hotels = results.slice(0, 10).map(async (result) => {
+        const placeDetailsUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${result.place_id}&fields=name,price_level,photo,rating&key=${apiKey}`;
+        const detailsResponse = await axios.get(placeDetailsUrl);
+        const { name, price_level, photos, rating } = detailsResponse.data.result;
+
+        // Get the first photo reference and construct the photo URL
+        let photoUrl = '';
+        if (photos && photos.length > 0) {
+          const photoReference = photos[0].photo_reference;
+          photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=${apiKey}`;
+        }
+
+        return {
+          name,
+          price_level,
+          photoUrl,
+          rating
+        };
+      });
+
+      return Promise.all(hotels);
+    } else {
+      return 'No hotels found near the location.';
+    }
+  } catch (error) {
+    throw new Error(`Error finding hotels: ${error.message}`);
+  }
+}
+
+app.get('/searchHotel', async (req, res) => {
+  const city = req.query.city; // Get the city from the query parameters
+
+  try {
+    const hotels = await findHotels(city);
+    res.json(hotels);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// function about set and get data  from database 
+
+
+app.post('/trip-confirmation', (req, res) => {
+  const flightData = req.body;
+  const hotelData = req.body.hotel;
+
+  const flight = {
+    id: flightData.id,
+    source: flightData.source,
+    one_way: flightData.one_way,
+    price: parseFloat(flightData.price),
+    currency: flightData.currency,
+    duration: flightData.duration,
+    segments: JSON.stringify(flightData.segments),
+  };
+
+  const hotel = {
+    name: hotelData.name,
+    photoUrl: hotelData.photoUrl,
+    rating: hotelData.rating
+  };
+
+  pool.query(
+    'INSERT INTO flight_confirmations (flight_data, hotel_data) VALUES ($1, $2)',
+    [JSON.stringify(flight), JSON.stringify(hotel)],
+    (error, results) => {
+      if (error) {
+        console.error('Error saving data:', error);
+        res.status(500).send('Error saving data');
+      } else {
+        res.send('Data saved successfully');
+      }
+    }
+  );
+});
+
+
+
+
+
+
+
+
 app.listen(PORT, () =>
   console.log(`Server is running on port: http://localhost:${PORT}`)
 );
+
 
 // npm i axios 
 // npm i dotenv 
