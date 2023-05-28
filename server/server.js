@@ -4,6 +4,7 @@ import cors from 'cors';
 import Amadeus from 'amadeus';
 import pg from 'pg';
 import dotenv from 'dotenv';
+
 import axios from 'axios';
 
 dotenv.config();
@@ -26,6 +27,7 @@ const amadeus = new Amadeus({
   clientId: process.env.APIKEY,
   clientSecret: process.env.APISEC,
 });
+
 
 // FlightOffer class to structure flight data
 class FlightOffer {
@@ -127,7 +129,7 @@ app.post('/flight-confirmation', (req, res) => {
   const flight = {
     id: flightData.id,
     source: flightData.source,
-    one_way: flightData.one_way,
+    one_way: flightData.one_way,        
     price: parseFloat(flightData.price),
     currency: flightData.currency,
     duration: flightData.duration,
@@ -171,10 +173,38 @@ app.get('/flight-confirmations', (req, res) => {
     }
   });
 });
+// Endpoint to retrieve all flight confirmations
+app.get('/flight-confirmations/:id', (req, res) => {
+  const confirmationId = req.params.id;
+
+  pool.query('SELECT * FROM flight_confirmations WHERE id = $1', [confirmationId], (error, results) => {
+    if (error) {
+      console.error('Error retrieving data:', error);
+      res.status(500).send('Error retrieving data');
+    } else {
+      if (results.rows.length === 0) {
+        res.status(404).send('Flight confirmation not found');
+      } else {
+        const row = results.rows[0];
+        const flightConfirmation = {
+          id: row.id,
+          source: row.flight_data.source,
+          one_way: row.flight_data.one_way,
+          price: parseFloat(row.flight_data.price),
+          currency: row.flight_data.currency,
+          duration: row.flight_data.duration,
+          segments: JSON.parse(row.flight_data.segments),
+        };
+        res.send(flightConfirmation);
+      }
+    }
+  });
+});
 
 // Endpoint to delete a flight confirmation
 app.delete('/flight-confirmations/:id', (req, res) => {
   const confirmationId = req.params.id;
+  
 
   pool.query('DELETE FROM flight_confirmations WHERE id = $1', [confirmationId], (error, results) => {
     if (error) {
@@ -197,3 +227,4 @@ app.listen(PORT, () =>
 // npm i body-parser
 // npm i cors
 // npm i pg
+
