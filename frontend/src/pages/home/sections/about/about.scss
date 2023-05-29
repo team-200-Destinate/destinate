@@ -1,0 +1,32 @@
+.about-section {
+    height: 100vh;
+    background:var(--offwhite) ;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: 3;
+
+    .card {
+      width: 190px;
+      height: 254px;
+      border-radius: 30px;
+      background: #e0e0e0;
+      box-shadow: 15px 15px 30px #bebebe,
+                 -15px -15px 30px #ffffff;
+    }
+    h2{
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--white-color);
+      text-align: center;
+      
+    }
+    .about-section__description-container{
+      background-color: var(--white-color);
+    }
+
+
+  }
+
+  
