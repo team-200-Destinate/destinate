@@ -294,7 +294,7 @@ app.get('/searchHotel', async (req, res) => {
 
 
 app.post('/trip-confirmation', (req, res) => {
-  const flightData = req.body;
+  const flightData = req.body.flight;
   const hotelData = req.body.hotel;
 
   const flight = {
@@ -327,6 +327,25 @@ app.post('/trip-confirmation', (req, res) => {
   );
 });
 
+
+
+app.get('/trip-confirmations', async (req, res) => {
+  try {
+    const client = await pool.connect();
+
+    // Retrieve data from the flight_confirmations table
+    const query = 'SELECT * FROM flight_confirmations';
+    const result = await client.query(query);
+
+    // Send the retrieved data as a response
+    res.json(result.rows);
+
+    client.release();
+  } catch (err) {
+    console.error('Error executing query', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 
 
