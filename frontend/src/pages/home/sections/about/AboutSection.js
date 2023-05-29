@@ -1,14 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "../../../../components/Button2/Button";
+
 
 import "./about.scss";
 
 function AboutSection() {
   return (
     <section className="about-section">
-      <div className="about-section__image-container">
-        <div className="about-section__content">
-          <div className="card">
+      <div className="pattern-dots-md gray-light about-img">
+        <img src="https://images.pexels.com/photos/4871012/pexels-photo-4871012.jpeg?auto=compress&cs=tinysrgb&w=600" />
+      </div>
+      <div className="card">
+        <div className="about-section__image-container">
+          <div className="about-section__content">
             <h2 className="about-section__title">About Our Website</h2>
             <div className="about-section__description-container">
               <p className="about-section__description">
@@ -34,7 +39,7 @@ function AboutSection() {
             </div>
           </div>
           <Link to="/contact" className="about-section__cta">
-            Contact Us
+              <Button/>
           </Link>
         </div>
       </div>
