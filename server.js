@@ -27,7 +27,11 @@ const amadeus = new Amadeus({
   clientId: process.env.APIKEY,
   clientSecret: process.env.APISEC,
 });
-
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:*"); // Update with your React application's origin
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // FlightOffer class to structure flight data
 class FlightOffer {
@@ -438,6 +442,23 @@ app.post('/results', async (req, res) => {
   } catch (error) {
     console.error('Error saving result:', error);
     res.status(500).json({ error: 'An error occurred while saving the result.' });
+  }
+});
+//get all data
+app.get('/results', async (req, res) => {
+  try {
+    // Retrieve all rows from the result_confirmations table
+    const query = 'SELECT * FROM result_confirmations';
+    const result = await pool.query(query);
+
+    if (result.rows.length === 0) {
+      res.status(404).json({ error: 'No results found.' });
+    } else {
+      res.status(200).json(result.rows);
+    }
+  } catch (error) {
+    console.error('Error retrieving results:', error);
+    res.status(500).json({ error: 'An error occurred while retrieving the results.' });
   }
 });
 // GET route to retrieve a specific result by ID
