@@ -441,7 +441,8 @@ app.post('/results', async (req, res) => {
   }
 });
 // GET route to retrieve a specific result by ID
-app.get('/results/:id', async (req, res) => {
+app.get('/results/:id',
+ async (req, res) => {
   try {
     const resultId = req.params.id;
     
@@ -461,7 +462,8 @@ app.get('/results/:id', async (req, res) => {
   }
 });
 
-app.delete('/results/:id', async (req, res) => {
+app.delete('/results/:id', 
+async (req, res) => {
   try {
     const resultId = req.params.id;
 
