@@ -1,33 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import axios from 'axios';
-
-import './style.scss';
 import Button from '../../../../components/Button4/Button';
 
+import './style.scss';
 
-function Filter({dataChanged}) {
+
+function Filter({dataChanged, destinateCity, setCityImg, setIsEmpty, setHotelInfo, desCity}) {
     
+    const getHotelData = ()=>{
+        //https://destinate-production.up.railway.app/hotels/london
+        axios.get(`https://destinate-production.up.railway.app/hotels/london`).then(res => {
+        console.log(res.data)    
+        setHotelInfo(res.data);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
+
     const submitData = (e) => {
         e.preventDefault();
-
+        
         let currentCityFromUser = e.target.currentCity.value;
-        console.log(currentCityFromUser);
         let destinationCityFromUser = e.target.destinationCity.value;
-        console.log(destinationCityFromUser);
         let dateFormUser = e.target.userDate.value;
-        console.log(dateFormUser);
 
         // http://localhost:5011/flight-search?originCode=NYC&destinationCode=SFO&dateOfDeparture=2023-06-02
         axios.get(`http://localhost:5011/flight-search?originCode=${currentCityFromUser}&destinationCode=${destinationCityFromUser}&dateOfDeparture=${dateFormUser}`)
         .then(res => {
             console.log(res.data);
             dataChanged(res.data);
+            getHotelData();
         })
         .catch(err => {
             console.log(err);
-
         });
-        
+
     }
     
     
@@ -42,6 +51,7 @@ function Filter({dataChanged}) {
                         <select id='currentCity'>
                             <option></option>
                             <option value={'NYC'}>New York City</option>
+                            <option value={'SFO'}>San Francisco</option>
                             <option value={'LON'}>London</option>
                             <option value={'PAR'}>Paris</option>
                             <option value={'BER'}>Berlin</option>
@@ -50,16 +60,14 @@ function Filter({dataChanged}) {
                             <option value={'SYD'}>Sydney</option>
                             <option value={'AMS'}>Amsterdam</option>
                             <option value={'TOR'}>Toronto</option>
-                            <option value={'MEX'}>Mexico City</option>
-                            <option value={'IST'}>Istanbul</option>
-                            <option value={'CAI'}>Cairo</option>
                         </select>
                     </div>
                     <div className='form-content_item'>
                         <label>Destination City:</label>
                         <select id='destinationCity'>
-                        <option></option>
-                        <option value={'SFO'}>San Francisco</option>
+                            <option></option>
+                            <option value={'NYC'}>New York City</option>
+                            <option value={'SFO'}>San Francisco</option>
                             <option value={'LON'}>London</option>
                             <option value={'PAR'}>Paris</option>
                             <option value={'BER'}>Berlin</option>
@@ -68,9 +76,6 @@ function Filter({dataChanged}) {
                             <option value={'SYD'}>Sydney</option>
                             <option value={'AMS'}>Amsterdam</option>
                             <option value={'TOR'}>Toronto</option>
-                            <option value={'MEX'}>Mexico City</option>
-                            <option value={'IST'}>Istanbul</option>
-                            <option value={'CAI'}>Cairo</option>
                         </select>
                     </div>
                     <div className='form-content_item'>
@@ -80,7 +85,7 @@ function Filter({dataChanged}) {
                 </div>
 
                 {/* <button type='submit'>Done</button> */}
-                <Button/>
+                <Button destinateCity={destinateCity} setCityImg={setCityImg} setIsEmpty={setIsEmpty}/>
             </form>
         </div>
     </section>

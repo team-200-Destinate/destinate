@@ -3,38 +3,11 @@ import "./button.scss";
 import axios from "axios";
 
 
-function Button({destinateCity, setCityImg, setIsEmpty}) {
+function Button() {
 
-  const getImage= (city)=> {
-
-    let apiKey = "5odyNdUAFfPcSEnMD6v1KP4ZqoWqnRRDyk6piPzmjjUVEYMCbr5Q2TtS"
-    
-    axios.get(`https://api.pexels.com/v1/search?query=${city}`, {
-        headers: {
-          Authorization: apiKey
-        }
-      })
-      .then(res => {
-        // console.log(res.data.photos[0].src.large);
-        setCityImg(res.data.photos[0].src.large);
-        })
-      .catch(error => {
-        console.error(error);
-      })
-  }
-
-  const onclickButton= ()=> {
-    setIsEmpty(true);
-
-    let theCity = destinateCity;
-
-    getImage(theCity);
-    setIsEmpty(false);
-  }
-
-  return (
-    <button onClick={onclickButton()}>
-      Done
+    return (
+      <button>
+      Add
       <div className="star-1">
         <svg
           xmlnsXlink="http://www.w3.org/1999/xlink"

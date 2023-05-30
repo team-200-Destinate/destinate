@@ -3,38 +3,18 @@ import "./button.scss";
 import axios from "axios";
 
 
-function Button({destinateCity, setCityImg, setIsEmpty}) {
+function Button({DBObj}) {
 
-  const getImage= (city)=> {
-
-    let apiKey = "5odyNdUAFfPcSEnMD6v1KP4ZqoWqnRRDyk6piPzmjjUVEYMCbr5Q2TtS"
-    
-    axios.get(`https://api.pexels.com/v1/search?query=${city}`, {
-        headers: {
-          Authorization: apiKey
-        }
+  const onclickButton = (obj) => {
+    axios.post(`https://destinate-production.up.railway.app/flight-confirmation`, obj).then((res) => {
+        console.log('post to DB'+res.data);
       })
-      .then(res => {
-        // console.log(res.data.photos[0].src.large);
-        setCityImg(res.data.photos[0].src.large);
-        })
-      .catch(error => {
-        console.error(error);
-      })
-  }
+      .catch((err) => console.log(err));
+  };
 
-  const onclickButton= ()=> {
-    setIsEmpty(true);
-
-    let theCity = destinateCity;
-
-    getImage(theCity);
-    setIsEmpty(false);
-  }
-
-  return (
-    <button onClick={onclickButton()}>
-      Done
+    return (
+      <button onClick={() => onclickButton(DBObj)}>
+      Add
       <div className="star-1">
         <svg
           xmlnsXlink="http://www.w3.org/1999/xlink"
