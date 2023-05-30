@@ -1,5 +1,4 @@
 .about-section {
-  height: 100vh;
   background: var(--offwhite);
   z-index: 3;
   padding: 2rem;
@@ -16,19 +15,20 @@
     animation: slideImage 2s ease-in-out infinite alternate;
 
   }
- 
+
 
   @keyframes slideImage {
     0% {
       transform: translate(10px, -10px);
     }
+
     100% {
       transform: translate(-10px, 10px);
     }
   }
 
   .card {
-    padding: 50px;
+    padding: 20px;
     border-radius: 20px;
     background: linear-gradient(to right, #b6eff561, #a7b4b57b);
     box-shadow: 32px 32px 64px #94999a, -32px -32px 64px #ffffff;
@@ -37,10 +37,11 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-    button {
-      margin: 20px;
-      position: absolute;
+    border: none;
 
+    button {
+      margin-top: 50px;
+      border-radius: 10px;
     }
 
   }
@@ -65,13 +66,14 @@
       flex-direction: column;
       align-items: center;
     }
-  
+
     img {
       width: 80%;
       margin: 20px;
     }
-  
+
     .card {
       width: 80%;
     }
-}}
+  }
+}

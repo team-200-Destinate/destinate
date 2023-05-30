@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../../../../components/Button/Button";
 import "./style.scss";
+import { Link } from 'react-router-dom';
 
 function Hero() {
   return (
@@ -13,7 +14,7 @@ function Hero() {
           Deleniti sit odit veniam, pariatur a vel sunt eligendi accusantium
           similique quae modi?
         </p>
-        <a href="#about"><Button/></a>
+        <Link to="/about" className="button-link"><Button /></Link>
       </div>
     </section>
   );

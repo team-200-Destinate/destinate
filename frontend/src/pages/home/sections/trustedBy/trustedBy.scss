@@ -1,0 +1,9 @@
+.trusted-by {
+    .clients-container {
+      overflow: hidden;
+    }
+    
+    .clients-container > div {
+      flex-shrink: 0;
+    }
+  }
