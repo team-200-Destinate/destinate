@@ -4,6 +4,7 @@ import './App.scss';
 import Layout from './layout';
 import Home from './pages/home/home';
 import About from './pages/about/About';
+import Planing from './pages/planing/Planing';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
+        <Route path='/services' element={<Planing />} />
       </Routes>
     </Layout>
   );

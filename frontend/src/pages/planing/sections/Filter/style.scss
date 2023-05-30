@@ -1,0 +1,72 @@
+.filter-section{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6cb2c8ec;
+    background-image: url(../../../../assets/images/filterSection.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+
+    &_content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 70px;
+        
+        .content-h2{
+            font-size: 40px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .content-form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+
+            button{
+                background-color: var(--lightorange-color);
+            }
+        }
+    
+        .form-content{
+            display: flex;
+            flex-direction: row;
+            gap: 70px;        
+            
+            &_item{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+
+                label{
+                    color: white;
+                    font-size: 22px;
+                }
+
+                select{
+                    width: 300px;
+                    height: 30px;
+                }
+
+                input{
+                    width: 300px;
+                    height: 30px;
+
+                    &:focus{
+                        width: 300px;
+                        height: 30px;
+                    }
+                }
+            }
+        }
+
+
+    
+    }
+}
