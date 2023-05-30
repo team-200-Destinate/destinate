@@ -3,12 +3,12 @@ import './Button.scss'
 
 
 
-function Button() {
+function ButtonEM() {
   return (
     <button>
-        Contact
+        Explore more
     </button>
   )
 }
 
-export default Button
+export default ButtonEM

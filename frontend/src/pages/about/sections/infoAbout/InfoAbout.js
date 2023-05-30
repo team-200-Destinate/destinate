@@ -1,5 +1,6 @@
 import React from "react";
 import "./infoAbout.scss";
+import { FaUsers, FaBookOpen } from "react-icons/fa";
 
 function InfoAbout() {
   const team = [
@@ -46,84 +47,78 @@ function InfoAbout() {
   ];
   return (
     <section className="info-about">
-      <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 info-about-section">
-        <div className="lg:w-10/12 w-full">
-          <h2 className="xl:w-8/12 lg:w-10/12 w-full font-bold text-gray-800 lg:text-4xl text-3xl lg:leading-10 leading-9 mt-2">
-            Our mission is to make travel calculations accessible and delightful
-            for all, ensuring that everyone can easily and enjoyably plan their
-            journeys.
-          </h2>
-          <p className="font-normal text-base leading-6 text-gray-600 mt-6">
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum.In the first place we have granted to God, and
-            by this our present charter confirmed for us and our heirs forever
-            that the English Church shall be free, and shall have her rights
-            entire,
-          </p>
-        </div>
+      <div className="py-10 bg-gray-50 sm:py-16 lg:py-24">
+        <div className="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
+          <div className="grid items-center grid-cols-1 lg:items-stretch md:grid-cols-2 gap-y-8 gap-x-12 xl:gap-x-20">
+            <div className="relative">
+              <div className="aspect-w-4 aspect-h-3">
+                <img
+                  className="object-cover w-full h-full"
+                  src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/5/man-using-phone.jpg"
+                  alt=""
+                />
+              </div>
 
-        <div className="lg:mt-14 sm:mt-10 mt-12">
-          <img
-            className="lg:block hidden w-full"
-            src="https://i.ibb.co/GvwJnvn/Group-736.png"
-            alt="Group of people Chilling"
-          />
-          <img
-            className="lg:hidden sm:block hidden w-full"
-            src="https://i.ibb.co/5sZTmHq/Rectangle-116.png"
-            alt="Group of people Chilling"
-          />
-          <img
-            className="sm:hidden block w-full"
-            src="https://i.ibb.co/zSxXJGQ/Rectangle-122.png"
-            alt="Group of people Chilling"
-          />
-        </div>
+              
+            </div>
 
-        <div className="lg:mt-16 sm:mt-12 mt-16 flex lg:flex-row justify-between flex-col lg:gap-8 gap-12">
-          <div className="w-full xl:w-5/12 lg:w-6/12">
-            <h2 className="font-bold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800">
-              Our Story
-            </h2>
-            <p className="font-normal text-base leading-6 text-gray-600 mt-4">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum.In the first place we have granted to
-              God, and by this our present charter confirmed for us and our
-              heirs forever that the English Church shall be free, and shall
-              have her rights entire, and her liberties inviolate; and we will
-              that it be thus observed; which is apparent from
-            </p>
-            <p className="font-normal text-base leading-6 text-gray-600 mt-6">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum.In the first place we have granted to
-              God, and by this our present charter confirmed for us and our
-              heirs forever that the English Church shall be free, and shall
-              have her rights entire, and her liberties inviolate; and we will
-              that it be thus observed; which is apparent from
-            </p>
-          </div>
-          <div className="lg:flex items-center w-full lg:w-1/2 ">
-            <img
-              className="lg:block hidden w-full"
-              src="https://i.ibb.co/2kxWpNm/Group-740.png"
-              alt="people discussing on board"
-            />
-            <img
-              className="lg:hidden sm:block hidden w-full h-3/4"
-              src="https://i.ibb.co/ZLgK3NQ/Group-788.png"
-              alt="people discussing on board"
-            />
-            <img
-              className="sm:hidden block w-full"
-              src="https://i.ibb.co/9g2R7Xr/Group-803.png"
-              alt="people discussing on board"
-            />
+            <div className="flex flex-col justify-between md:py-5">
+              <blockquote>
+                <p className="text-2xl leading-relaxed text-black">
+                  You made it so simple. My new site is so much faster and
+                  easier to work with than my old site. I just choose the page,
+                  make the change and click save. No need to think twice before
+                  making it.
+                </p>
+              </blockquote>
+
+
+            </div>
           </div>
         </div>
       </div>
+      {/* ---- */}
+      <section className="py-10 bg-gray-50 sm:py-16 lg:py-24">
+        <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
+          <div className="grid items-center md:grid-cols-2 md:gap-x-20 gap-y-10">
+            <div className="relative pl-16 pr-10 sm:pl-6 md:pl-0 xl:pr-0 md:order-2">
+              <img
+                className="absolute top-6 -right-4 xl:-right-12"
+                src="https://cdn.rareblocks.xyz/collection/celebration/images/features/3/dots-pattern.svg"
+                alt=""
+              />
+
+              <div className="relative max-w-xs ml-auto">
+                <div className="overflow-hidden aspect-w-3 aspect-h-4">
+                  <img
+                    className="object-cover w-full h-full scale-150"
+                    src="https://cdn.rareblocks.xyz/collection/celebration/images/features/3/man-woman-discussing.jpg"
+                    alt=""
+                  />
+                </div>
+
+                <div className="absolute bottom-0 -left-16">
+               
+                </div>
+              </div>
+            </div>
+
+            <div className="md:order-1">
+              <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
+                Grow business with Celebration.
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-gray-600">
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                amet sint. Velit officia consequat duis enim velit mollit.
+                Exercitation veniam consequat sunt nostrud amet.
+              </p>
+
+
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/*  */}
       <div className="vew"></div>
       {/*  */}
@@ -134,8 +129,7 @@ function InfoAbout() {
               Meet our talent team
             </h3>
             <p className="text-gray-600 mt-3">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.Lorem Ipsum has been the industry's standard dummy.
+
             </p>
           </div>
 

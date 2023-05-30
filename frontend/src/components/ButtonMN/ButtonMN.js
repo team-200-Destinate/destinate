@@ -3,12 +3,12 @@ import './Button.scss'
 
 
 
-function Button() {
+function ButtonMN() {
   return (
     <button>
-        Contact
+        More News
     </button>
   )
 }
 
-export default Button
+export default ButtonMN

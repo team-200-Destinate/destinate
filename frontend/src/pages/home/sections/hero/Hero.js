@@ -1,20 +1,22 @@
 import React from "react";
-import Button from "../../../../components/Button/Button";
+import Button from "../../../../components/ButtonRM/ButtonRM";
 import "./style.scss";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
     <section className="hero-section">
       <div className="hero-section__container">
-        <h1>Fly <span>Smart</span>, Pay Less</h1>
+        <h1>
+          Fly <span>Smart</span>, Pay Less
+        </h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic,
-          reprehenderit libero? Illum maxime ut repellendus. Cumque, distinctio!
-          Deleniti sit odit veniam, pariatur a vel sunt eligendi accusantium
-          similique quae modi?
+          Travel is a transformative journey that liberates the soul, opening up
+          a world of possibilities and experiences beyond our wildest dreams.
         </p>
-        <Link to="/about" className="button-link"><Button /></Link>
+        <Link to="/about" className="button-link">
+          <Button />
+        </Link>
       </div>
     </section>
   );
