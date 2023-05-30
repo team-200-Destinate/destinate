@@ -1,5 +1,4 @@
 
-
 ## Flight Search GET Request
 
 To perform a flight search, send a GET request to the following endpoint:
@@ -97,3 +96,54 @@ To save hotel data, send a POST request to the following URL:
 To save hotel data, send a POST request to the following URL:
 
 `http://localhost:5000/trip-confirmations/:id`
+_______________________________________________________________________________ planning and plan page backend
+
+
+To create a new result confirmation, you can use the following JSON input:
+
+```json
+{
+  "flightId": 1,
+  "hotelName": "Example Hotel",
+  "hotelPhotoUrl": "https://example.com/hotel.jpg",
+  "hotelRating": 4.5,
+  "hotelPrice": 150.99
+}
+````````
+The result confirmation will be stored in the database and will have the following structure:
+
+```json
+
+{
+  "id": 10,
+  "flight_id": 1,
+  "hotel_price": "150.99",
+  "hotel_name": "Example Hotel",
+  "hotel_photo_url": "https://example.com/hotel.jpg",
+  "hotel_rating": "4.5"
+}
+```````
+To retrieve the flight price, you can make a GET request to the following endpoint:
+
+
+
+http://localhost:5000/trip-confirmations/1
+
+Make sure to replace 1 with the appropriate ID of the trip confirmation.
+
+To retrieve the hotel price and other details, you can make a GET request to the following endpoint:
+
+
+
+http://localhost:5000/results/4
+
+Make sure to replace 4 with the appropriate ID of the result confirmation.
+
+If you need to delete a result confirmation, you can make a DELETE request to the following endpoint:
+
+
+
+http://localhost:5000/results/4
+
+Make sure to replace 4 with the appropriate ID of the result confirmation.
+dont forget to run psql -d destinate_db -f schema.sql
