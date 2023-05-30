@@ -12,102 +12,11 @@
         font-weight: 700;
     }
 
-    .card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-        gap: 1rem;
-        justify-items: center;
-
-        .card {
-            transition: all 0.2s;
-            position: relative;
-            width: 18rem;
-            background: inherit;
-            border: none;
-
-            .card-inner {
-                height: 33rem;
-                background: rgba(255, 255, 255, 0.418);
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-                backdrop-filter: blur(10px);
-                border: none;
-                display: flex;
-                border-radius: 8px;
-                flex-direction: column;
-                justify-content: space-between;
-
-                .card-body {
-                    padding: 1rem;
-                    flex-grow: 1;
-                    background-color: #00e1ff00;
-
-                    h5 {
-                        margin-bottom: 1rem;
-                    }
-
-                    p {
-                        margin-bottom: 1rem;
-                    }
-
-                    a {
-                        align-self: flex-end;
-                    }
-                }
-            }
-
-            &:hover {
-                transform: scale(1.04) rotate(1deg);
-            }
-
-            .circle {
-                width: 100px;
-                height: 100px;
-                background: radial-gradient(#00e1ff, #ffffff);
-                border-radius: 50%;
-                position: absolute;
-                animation: move-up6 2s ease-in infinite alternate-reverse;
-            }
-
-            .circle:nth-child(1) {
-                top: -25px;
-                left: -25px;
-            }
-
-            .circle:nth-child(2) {
-                bottom: -25px;
-                right: -25px;
-                animation-name: move-down1;
-            }
-        }
-
-        @keyframes move-up6 {
-            to {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes move-down1 {
-            to {
-                transform: translateY(10px);
-            }
-        }
     }
     .button-more{
         display: flex;
         padding: 40px;
         justify-content: center;
-        .link{
-       
-            button{
-            display: flex;
-            align-items: center;
-            background: #00000000;
-            box-shadow: none;
-            text-transform: uppercase;
-            
-            
-        }
-        }
+        
         
     }
-}

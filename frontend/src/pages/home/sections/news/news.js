@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./news.scss";
-import Button from "../../../../components/Button3/Button";
-import ButtonMore from "../../../../components/ButtonMore/ButtonMore";
+import ButtonRM from "../../../../components/ButtonRM/ButtonRM";
+import ButtonMN from "../../../../components/ButtonMN/ButtonMN";
 import { Link } from "react-router-dom";
 
 function News() {
@@ -26,39 +25,46 @@ function News() {
 
   return (
     <section className="news-section">
-      <div className="container">
-        <h2 className="news-heading">News</h2>
-        <div className="card-grid">
-          {newsData.map((article, index) => (
-            <div className="card" style={{ width: "18rem" }} key={index}>
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="card-inner">
-                <img
-                  src={article.urlToImage}
-                  className="card-img-top"
-                  alt={article.title}
-                />
-                <div className=" card-body d-flex flex-column">
-                  <h5 className="card-title">{article.title}</h5>
-                  <p className="card-text">{article.description}</p>
+      <div className="container mx-auto">
+        <h2 className="news-heading text-3xl mb-4">News</h2>
+        <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pt-14">
+          {newsData.map((news, index) => (
+            <div
+              key={index}
+              className="max-w-lg mx-auto shadow-lg flex flex-col bg-slate-50 rounded-lg"
+            >
+              <img
+                src={news.urlToImage}
+                alt={news.title}
+                className="w-full h-60 object-cover rounded-t-lg"
+              />
+              <div className="flex-grow flex flex-col justify-between">
+                <div className="px-6 py-4">
+                  <div className="font-bold text-xl mb-2">{news.title}</div>
+                  <p className="text-gray-700 text-base">
+                    {news.description.slice(0, 50)}...
+                  </p>
+                </div>
+                <div className="px-6 pb-4">
                   <a
-                    className="align-self-end mt-auto"
-                    href={article.url}
+                    href={news.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="inline-block font-bold py-2 px-4 rounded-full"
                   >
-                    <Button />
+                    <ButtonRM />
                   </a>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-      {/*         <Link to="/news" className="link">News</Link>
- */}
+        </section>
       </div>
-        <div className="button-more"><Link to="/news" className="link"><ButtonMore/> </Link></div>
+      <div className="button-more">
+        <Link to="/news" className="link">
+          <ButtonMN />
+        </Link>
+      </div>
     </section>
   );
 }

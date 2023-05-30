@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ButtonEM from "../../../../components/ButtonEM/ButtonEM";
 
 function TrustedBy() {
   return (
@@ -111,11 +112,8 @@ function TrustedBy() {
                   amet sint. Velit officia conse duis enim velit mollit.
                   Exercitation veniam.
                 </p>
-                <Link to="/planing"
-                  class=" link inline-flex text-decoration-none items-center justify-center px-10 py-4 text-base font-semibold text-white transition-all duration-200 rounded-md mt-9 bg-gradient-to-r from-fuchsia-600 to-blue-600 hover:opacity-80 focus:opacity-80"
-                  role="button"
-                >
-                  Explore more
+                <Link to="/planing" className="button-link">
+                  <ButtonEM />
                 </Link>
               </div>
             </div>

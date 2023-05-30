@@ -1,79 +1,9 @@
-.about-section {
-  background: var(--offwhite);
-  z-index: 3;
-  padding: 2rem;
-  display: flex;
-  justify-content: space-around;
-  background-color: var(--lightGray-color);
+.about-section{
+    background-image:url('../../../../assets/images/aboutBG.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(150, 250, 235, 0.37);
+    background-blend-mode: overlay;
 
-  img {
-    width: 60%;
-    margin: 50px;
-    box-shadow: 32px 32px 64px #97e9f9, -32px -32px 64px #acacac;
-    background-color: #e3ebed00;
-    border-radius: 20px;
-    animation: slideImage 2s ease-in-out infinite alternate;
-
-  }
-
-
-  @keyframes slideImage {
-    0% {
-      transform: translate(10px, -10px);
-    }
-
-    100% {
-      transform: translate(-10px, 10px);
-    }
-  }
-
-  .card {
-    padding: 20px;
-    border-radius: 20px;
-    background: linear-gradient(to right, #b6eff561, #a7b4b57b);
-    box-shadow: 32px 32px 64px #94999a, -32px -32px 64px #ffffff;
-    width: 70%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    border: none;
-
-    button {
-      margin-top: 50px;
-      border-radius: 10px;
-    }
-
-  }
-
-  h2 {
-    font-size: 40px;
-    font-weight: 700;
-    color: var(--secondary-color);
-    text-align: center;
-    padding: 20px;
-  }
-
-  p {
-    font-size: 17px;
-    font-weight: 600;
-  }
-
-
-
-  @media (max-width: 1117px) {
-    .about-section {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    img {
-      width: 80%;
-      margin: 20px;
-    }
-
-    .card {
-      width: 80%;
-    }
-  }
+ 
 }
