@@ -8,18 +8,20 @@ import { Link } from "react-router-dom";
 function News() {
   const [newsData, setNewsData] = useState([]);
 
+  const newsApiUrl = process.env.REACT_APP_NEWS_API_URL;
+  const newsApiKey = process.env.REACT_APP_NEWS_API_KEY;
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://newsapi.org/v2/everything?q=tourism&apiKey=282f8276459c4589aa2119c793f455d9"
-        );
+        const response = await axios.get(`${newsApiUrl}&apiKey=${newsApiKey}`);
         setNewsData(response.data.articles.slice(0, 3));
       } catch (error) {
         console.error("Error fetching news data:", error);
       }
     };
-
+  
     fetchData();
   }, []);
 
