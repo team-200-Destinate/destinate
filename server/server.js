@@ -26,6 +26,8 @@ app.use(cors({
 }));
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Origin', 'https://cozy-heliotrope-daf0f8.netlify.app');
+
   next();
 });
 const amadeus = new Amadeus({
