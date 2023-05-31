@@ -22,7 +22,11 @@ app.use(bodyParser.json());
 app.use(cors({
   origin: 'http://localhost:4200',
 }));
-
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3007');
+  next();
+});
 const amadeus = new Amadeus({
   clientId: process.env.APIKEY,
   clientSecret: process.env.APISEC,
