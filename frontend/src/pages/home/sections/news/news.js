@@ -25,8 +25,8 @@ function News() {
 
   return (
     <section className="news-section">
-      <div className="container mx-auto">
-        <h2 className="news-heading text-3xl mb-4">News</h2>
+      <div className="container mx-auto p-1">
+        <h2 className="news-heading text-3xl">News</h2>
         <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pt-14">
           {newsData.map((news, index) => (
             <div
@@ -50,7 +50,7 @@ function News() {
                     href={news.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block font-bold py-2 px-4 rounded-full"
+                    className="inline-block py-2 px-4 rounded-full"
                   >
                     <ButtonRM />
                   </a>

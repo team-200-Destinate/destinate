@@ -5,8 +5,8 @@ import './Button.scss'
 
 function Button() {
   return (
-    <button>
-        Contact
+    <button className='buttonImpo'>
+      <span>Contact</span> 
     </button>
   )
 }

@@ -1,11 +1,11 @@
 import React from 'react'
-import './Button.scss'
+import '../Button/Button.scss'
 
 
 
 function ButtonRM() {
   return (
-    <button>
+    <button className='buttonImpo'>
         Read More
     </button>
   )

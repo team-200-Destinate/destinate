@@ -6,6 +6,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Fugaz+One&family=Yatra+One&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Raleway:300);
+@import url(https://fonts.googleapis.com/css?family=Lusitana:400,700);
+
 
 :root {
   --font-base: "DM Sans", sans-serif;
@@ -22,6 +26,7 @@
   --lightorange-color: #FEC195;
   --gradient-background: linear-gradient(to right, #12646f80, #43b1c0a7);
   --red-color:#fe3d3d;
+  --orange:orange;
 
 }
 

@@ -6,43 +6,43 @@ function InfoAbout() {
   const team = [
     {
       avatar:
-        "https://images.unsplash.com/photo-1579017331263-ef82f0bbc748?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80",
-      name: "Martiana dialan",
-      title: "Product designer",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry's standard dummy",
-      linkedin: "javascript:void(0)",
-      twitter: "javascript:void(0)",
-      github: "javascript:void(0)",
+        "https://cdn.discordapp.com/attachments/1111616935579373670/1113111212109086872/sham.png",
+      name: "Sham Jalal",
+      title: "Desinger/coder",
+      desc: "A great team member and hard working very glad she is part of the team.",
+      linkedin: "https://www.linkedin.com/in/sham-ahmad-b75984250/",
+     
+      github: "https://github.com/orgs/team-200-Destinate/people/ShamAhmad2022",
     },
     {
       avatar:
-        "https://images.unsplash.com/photo-1623605931891-d5b95ee98459?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80",
-      name: "Micheal colorand",
-      title: "Software engineer",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry's standard dummy",
-      linkedin: "javascript:void(0)",
-      twitter: "javascript:void(0)",
-      github: "javascript:void(0)",
+        "https://avatars.githubusercontent.com/u/101422079?v=4",
+      name: "Mohammed Attala",
+      title: "CIS engineer/coder",
+      desc: "A great team member and hard working very glad he is part of the team.",
+      linkedin: "https://www.linkedin.com/in/mohammad-attallah-01601b1a4/",
+     
+      github: "https://github.com/mohAttallah",
     },
     {
       avatar:
-        "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      name: "Daniel martin",
-      title: "Product designer",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry's standard dummy",
-      linkedin: "javascript:void(0)",
-      twitter: "javascript:void(0)",
-      github: "javascript:void(0)",
+        "https://avatars.githubusercontent.com/u/92924350?v=4",
+      name: "Saleh Almashni",
+      title: "Software engineer/coder/Lead desinger",
+      desc: "A very skilled and  helpful dude that i am glad he is on our team.",
+      linkedin: "https://www.linkedin.com/in/saleh-almashni/",
+     
+      github: "https://github.com/saleh2001k:void(0)",
     },
     {
       avatar:
-        "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
-      name: "Vicky tanson",
-      title: "Product manager",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry's standard dummy",
-      linkedin: "javascript:void(0)",
-      twitter: "javascript:void(0)",
-      github: "javascript:void(0)",
+        "https://avatars.githubusercontent.com/u/67604121?v=4",
+      name: "Laith Saleem",
+      title: "Coder/Engineer",
+      desc: "A great team member and hard working very glad he is part of the team.",
+      linkedin: "https://www.linkedin.com/in/laith-s-757591112/",
+     
+      github: "https://github.com/Laith-Vlad",
     },
   ];
   return (
@@ -53,8 +53,8 @@ function InfoAbout() {
             <div className="relative">
               <div className="aspect-w-4 aspect-h-3">
                 <img
-                  className="object-cover w-full h-full"
-                  src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/5/man-using-phone.jpg"
+                  className="object-cover w-full h-96 rounded-xl"
+                  src="https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_91_1_1528x800/public/2020-08/shutterstock_1731284125_0.jpg?itok=89UrdUt_"
                   alt=""
                 />
               </div>
@@ -65,11 +65,7 @@ function InfoAbout() {
             <div className="flex flex-col justify-between md:py-5">
               <blockquote>
                 <p className="text-2xl leading-relaxed text-black">
-                  You made it so simple. My new site is so much faster and
-                  easier to work with than my old site. I just choose the page,
-                  make the change and click save. No need to think twice before
-                  making it.
-                </p>
+                Welcome to our aspiring team of young developers dedicated to creating a reliable and exceptional service for travelers like you. At our core, we are driven by a passion for innovation and a deep understanding of the evolving needs of modern-day adventurers.</p>
               </blockquote>
 
 
@@ -89,7 +85,7 @@ function InfoAbout() {
               />
 
               <div className="relative max-w-xs ml-auto">
-                <div className="overflow-hidden aspect-w-3 aspect-h-4">
+                <div className="overflow-hidden aspect-w-3 aspect-h-4 rounded-xl">
                   <img
                     className="object-cover w-full h-full scale-150"
                     src="https://cdn.rareblocks.xyz/collection/celebration/images/features/3/man-woman-discussing.jpg"
@@ -105,12 +101,10 @@ function InfoAbout() {
 
             <div className="md:order-1">
               <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
-                Grow business with Celebration.
+                Our vision 
               </h2>
               <p className="mt-4 text-base leading-relaxed text-gray-600">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint. Velit officia consequat duis enim velit mollit.
-                Exercitation veniam consequat sunt nostrud amet.
+              At Destinate, our vision is to redefine the way people experience travel. We are driven by a relentless commitment to providing our customers with the best and most effective travel solutions available. Through innovative technologies, personalized experiences, and a dedicated team, we aim to transform the way you explore the world. Join us on this exciting journey as we strive to make travel effortless, enriching, and unforgettable. 
               </p>
 
 
@@ -143,10 +137,10 @@ function InfoAbout() {
             <ul className="grid gap-8 lg:grid-cols-2">
               {team.map((item, idx) => (
                 <li key={idx} className="gap-8 sm:flex">
-                  <div className="w-full h-60">
+                  <div className="w-96 h-60">
                     <img
                       src={item.avatar}
-                      className="w-full h-full object-cover object-center shadow-md rounded-xl"
+                      className="w-60 h-60 object-cover object-center shadow-md rounded-xl"
                       alt=""
                     />
                   </div>
@@ -157,25 +151,7 @@ function InfoAbout() {
                     <p className="text-indigo-600">{item.title}</p>
                     <p className="text-gray-600 mt-2">{item.desc}</p>
                     <div className="mt-3 flex gap-4 text-gray-400">
-                      <a href={item.twitter}>
-                        <svg
-                          className="w-5 h-5 duration-150 hover:text-gray-500"
-                          fill="currentColor"
-                          viewBox="0 0 48 48"
-                        >
-                          <g clip-path="url(#clip0_17_80)">
-                            <path
-                              fill="currentColor"
-                              d="M15.1 43.5c18.11 0 28.017-15.006 28.017-28.016 0-.422-.01-.853-.029-1.275A19.998 19.998 0 0048 9.11c-1.795.798-3.7 1.32-5.652 1.546a9.9 9.9 0 004.33-5.445 19.794 19.794 0 01-6.251 2.39 9.86 9.86 0 00-16.788 8.979A27.97 27.97 0 013.346 6.299 9.859 9.859 0 006.393 19.44a9.86 9.86 0 01-4.462-1.228v.122a9.844 9.844 0 007.901 9.656 9.788 9.788 0 01-4.442.169 9.867 9.867 0 009.195 6.843A19.75 19.75 0 010 39.078 27.937 27.937 0 0015.1 43.5z"
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_17_80">
-                              <path fill="currentColor" d="M0 0h48v48H0z" />
-                            </clipPath>
-                          </defs>
-                        </svg>
-                      </a>
+                     
                       <a href={item.github}>
                         <svg
                           className="w-5 h-5 duration-150 hover:text-gray-500"
