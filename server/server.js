@@ -130,6 +130,7 @@ app.get(`/flight-search`, (req, res) => {
 // Endpoint to save flight confirmation data
 app.post('/flight-confirmation', (req, res) => {
   const flightData = req.body;
+  const hotelData = req.body.hotel; // Extract hotel data separately
 
   const flight = {
     id: flightData.id,
@@ -142,18 +143,51 @@ app.post('/flight-confirmation', (req, res) => {
   };
 
   pool.query(
-    'INSERT INTO flight_confirmations (flight_data) VALUES ($1)',
+    'INSERT INTO flight_confirmations (flight_data) VALUES ($1) RETURNING id',
     [JSON.stringify(flight)],
-    (error, results) => {
+    (error, flightResult) => {
       if (error) {
-        console.error('Error saving data:', error);
-        res.status(500).send('Error saving data');
+        console.error('Error saving flight data:', error);
+        res.status(500).send('Error saving flight data');
       } else {
-        res.send('Data saved successfully');
+        const flightId = flightResult.rows[0].id;
+        linkFlightAndHotel(flightId, hotelData, res); // Pass hotelData as a separate argument
       }
     }
   );
 });
+
+function linkFlightAndHotel(flightId, hotelData, res) {
+  console.log('hoteldatalin:', hotelData);
+  if (hotelData) {
+    const { name, photoUrl, rating } = hotelData;
+
+    const hotel = {
+      name: name,
+      photoUrl: photoUrl,
+      rating: rating,
+      flight_id: flightId,
+      
+    };
+    console.log('name:', name);
+    console.log('photoUrl:', photoUrl);
+    console.log('rating:', rating);
+    pool.query(
+      'INSERT INTO hotel_confirmations (hotel_data, flight_id) VALUES ($1, $2)',
+      [JSON.stringify(hotel), flightId],
+      (error, hotelResult) => {
+        if (error) {
+          console.error('Error saving hotel data:', error);
+          res.status(500).send('Error saving hotel data');
+        } else {
+          res.send('Flight and hotel data saved successfully');
+        }
+      }
+    );
+  } else {
+    res.send('Flight data saved successfully');
+  }
+}
 
 // Endpoint to retrieve all flight confirmations
 app.get('/flight-confirmations', (req, res) => {
@@ -220,19 +254,26 @@ app.delete('/flight-confirmations/:id', (req, res) => {
     }
   });
 });
+//----------------------------------------------------------Hotels----------------------------------------
+const apiKey = 'AIzaSyCYT5U2bjcBd_bLJ_VVHQW9lvgvPgmmSQM';
+app.get('/hotels/:city', async (req, res) => {
+  const city = req.params.city;
 
-// -------------------------------------------------------------------------------------------------------
-// ---------------- Hotel ---------------------------------------------
-
+  try {
+    const { latitude, longitude } = await getCoordinates(city);
+    const hotels = await findHotels(latitude, longitude);
+    res.send(hotels);
+  } catch (error) {
+    console.error('Error finding hotels:', error.message);
+    res.status(500).send('Error finding hotels');
+  }
+});
 
 async function getCoordinates(city) {
-  const apiKey = 'AIzaSyCYT5U2bjcBd_bLJ_VVHQW9lvgvPgmmSQM';
   const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(city)}&key=${apiKey}`;
-
   try {
     const response = await axios.get(geocodingUrl);
     const { results } = response.data;
-
     if (results.length > 0) {
       const { lat, lng } = results[0].geometry.location;
       return { latitude: lat, longitude: lng };
@@ -244,29 +285,22 @@ async function getCoordinates(city) {
   }
 }
 
-async function findHotels(city) {
+async function findHotels(latitude, longitude) {
   try {
-    const { latitude, longitude } = await getCoordinates(city);
-
-    const apiKey = 'AIzaSyCYT5U2bjcBd_bLJ_VVHQW9lvgvPgmmSQM';
     const placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=lodging&key=${apiKey}`;
-
     const response = await axios.get(placesUrl);
     const { results } = response.data;
-
     if (results.length > 0) {
       const hotels = results.slice(0, 10).map(async (result) => {
         const placeDetailsUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${result.place_id}&fields=name,price_level,photo,rating&key=${apiKey}`;
         const detailsResponse = await axios.get(placeDetailsUrl);
         const { name, price_level, photos, rating } = detailsResponse.data.result;
-
         // Get the first photo reference and construct the photo URL
         let photoUrl = '';
         if (photos && photos.length > 0) {
           const photoReference = photos[0].photo_reference;
           photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=${apiKey}`;
         }
-
         return {
           name,
           price_level,
@@ -274,7 +308,6 @@ async function findHotels(city) {
           rating
         };
       });
-
       return Promise.all(hotels);
     } else {
       return 'No hotels found near the location.';
@@ -284,53 +317,97 @@ async function findHotels(city) {
   }
 }
 
-app.get('/searchHotel', async (req, res) => {
-  const city = req.query.city; // Get the city from the query parameters
-
-  try {
-    const hotels = await findHotels(city);
-    res.json(hotels);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// function about set and get data  from database 
-
-
 app.post('/trip-confirmation', (req, res) => {
-  const flightData = req.body.flight;
-  const hotelData = req.body.hotel;
-
-  const flight = {
-    id: flightData.id,
-    source: flightData.source,
-    one_way: flightData.one_way,
-    price: parseFloat(flightData.price),
-    currency: flightData.currency,
-    duration: flightData.duration,
-    segments: JSON.stringify(flightData.segments),
-  };
-
+  const { flightId, name, photoUrl, rating } = req.body;
+ console.log(flightId+"============")
   const hotel = {
-    name: hotelData.name,
-    photoUrl: hotelData.photoUrl,
-    rating: hotelData.rating
+    name: name,
+    photoUrl: photoUrl,
+    rating: rating
   };
 
   pool.query(
-    'INSERT INTO flight_confirmations (flight_data, hotel_data) VALUES ($1, $2)',
-    [JSON.stringify(flight), JSON.stringify(hotel)],
-    (error, results) => {
+    'INSERT INTO hotel_confirmations (hotel_data) VALUES ($1) RETURNING id',
+    [JSON.stringify(hotel)],
+    (error, hotelResult) => {
       if (error) {
-        console.error('Error saving data:', error);
-        res.status(500).send('Error saving data');
+        console.error('Error saving hotel data:', error);
+        res.status(500).send('Error saving hotel data');
       } else {
-        res.send('Data saved successfully');
+        const hotelId = hotelResult.rows[0].id;
+        linkFlightAndHotel(flightId, hotel, res); // Call the function to link flight and hotel data
       }
     }
   );
 });
+app.get('/trip-confirmations', async (req, res) => {
+  try {
+    const client = await pool.connect();
+
+    // Retrieve flight and hotel data from the joined tables
+    const query = `
+      SELECT fc.*, hc.hotel_data
+      FROM flight_confirmations fc
+      LEFT JOIN hotel_confirmations hc ON fc.id = hc.flight_id
+    `;
+    const result = await client.query(query);
+
+    // Send the retrieved data as a response
+    res.json(result.rows);
+
+    client.release();
+  } catch (err) {
+    console.error('Error executing query', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+// Get a specific trip confirmation by ID
+app.get('/trip-confirmations/:id', async (req, res) => {
+  const confirmationId = req.params.id;
+
+  try {
+    const client = await pool.connect();
+
+    // Retrieve the specific trip confirmation by ID
+    const query = 'SELECT * FROM flight_confirmations WHERE id = $1';
+    const result = await client.query(query, [confirmationId]);
+
+    if (result.rows.length === 0) {
+      // If no trip confirmation with the given ID is found, send a 404 response
+      res.status(404).send('Trip confirmation not found');
+    } else {
+      // Send the retrieved trip confirmation as a response
+      res.json(result.rows[0]);
+    }
+
+    client.release();
+  } catch (err) {
+    console.error('Error executing query', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+// Delete a trip confirmation by ID
+app.delete('/trip-confirmations/:id', async (req, res) => {
+  const confirmationId = req.params.id;
+
+  try {
+    const client = await pool.connect();
+
+    // Delete the specific trip confirmation by ID
+    const query = 'DELETE FROM flight_confirmations WHERE id = $1';
+    await client.query(query, [confirmationId]);
+
+    res.send('Trip confirmation deleted successfully');
+
+    client.release();
+  } catch (err) {
+    console.error('Error executing query', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 
 
 
@@ -352,11 +429,62 @@ app.get('/trip-confirmations', async (req, res) => {
   }
 });
 
+///////////////////////////Results//////////////////////////
+app.post('/results', async (req, res) => {
+  try {
+    const { flightId, hotelName, hotelPhotoUrl, hotelRating, hotelPrice } = req.body;
+    
+    // Insert the result data into the result_confirmations table
+    const query = 'INSERT INTO result_confirmations (flight_id, hotel_name, hotel_photo_url, hotel_rating, hotel_price) VALUES ($1, $2, $3, $4, $5) RETURNING id';
+    const values = [flightId, hotelName, hotelPhotoUrl, hotelRating, hotelPrice];
+    const result = await pool.query(query, values);
 
+    res.status(201).json({ id: result.rows[0].id });
+  } catch (error) {
+    console.error('Error saving result:', error);
+    res.status(500).json({ error: 'An error occurred while saving the result.' });
+  }
+});
+// GET route to retrieve a specific result by ID
+app.get('/results/:id', async (req, res) => {
+  try {
+    const resultId = req.params.id;
+    
+    // Retrieve the result by ID from the result_confirmations table
+    const query = 'SELECT * FROM result_confirmations WHERE id = $1';
+    const values = [resultId];
+    const result = await pool.query(query, values);
 
+    if (result.rows.length === 0) {
+      res.status(404).json({ error: 'Result not found.' });
+    } else {
+      res.status(200).json(result.rows[0]);
+    }
+  } catch (error) {
+    console.error('Error retrieving result:', error);
+    res.status(500).json({ error: 'An error occurred while retrieving the result.' });
+  }
+});
 
+app.delete('/results/:id', async (req, res) => {
+  try {
+    const resultId = req.params.id;
 
+    // Delete the result by ID from the result_confirmations table
+    const query = 'DELETE FROM result_confirmations WHERE id = $1';
+    const values = [resultId];
+    const result = await pool.query(query, values);
 
+    if (result.rowCount === 0) {
+      res.status(404).json({ error: 'Result not found.' });
+    } else {
+      res.status(204).json({ message: `Result with ID ${resultId} has been deleted.` });
+    }
+  } catch (error) {
+    console.error('Error deleting result:', error);
+    res.status(500).json({ error: 'An error occurred while deleting the result.' });
+  }
+});
 
 app.listen(PORT, () =>
   console.log(`Server is running on port: http://localhost:${PORT}`)

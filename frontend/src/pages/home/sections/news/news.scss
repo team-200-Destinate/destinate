@@ -1,0 +1,22 @@
+@import 'bootstrap';
+
+.news-section {
+
+    background: linear-gradient(to right,#a7b4b57b, #b6eff561 );
+
+    h2 {
+        font-size: 40px;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 40px;
+        font-weight: 700;
+    }
+
+    }
+    .button-more{
+        display: flex;
+        padding: 40px;
+        justify-content: center;
+        
+        
+    }

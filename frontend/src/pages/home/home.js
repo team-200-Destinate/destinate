@@ -1,19 +1,19 @@
-import React from 'react'
-import Hero from './sections/hero/Hero'
-import AboutSection from './sections/about/AboutSection'
-import News from './sections/news/news'
-import Services from './sections/services/Services'
+import React from "react";
+import Hero from "./sections/hero/Hero";
+import AboutSection from "./sections/about/AboutSection";
+import News from "./sections/news/news";
+import TustedBy from "./sections/trustedBy/TrustedBy";
+
 
 function Home() {
   return (
     <>
       <Hero />
       <AboutSection />
-      <Services />
       <News />
- 
+      <TustedBy/>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;

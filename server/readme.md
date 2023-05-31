@@ -1,6 +1,4 @@
 
-
-
 ## Flight Search GET Request
 
 To perform a flight search, send a GET request to the following endpoint:
@@ -114,7 +112,7 @@ To create a new result confirmation, you can use the following JSON input:
 ````````
 The result confirmation will be stored in the database and will have the following structure:
 
-```json
+json
 
 {
   "id": 10,
