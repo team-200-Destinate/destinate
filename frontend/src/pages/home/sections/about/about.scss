@@ -1,9 +1,19 @@
-.about-section{
-    background-image:url('../../../../assets/images/aboutBG.jpg');
+.about-section {
+    background-image: url('../../../../assets/images/aboutBG.jpg');
     background-size: cover;
     background-position: center;
-    background-color: rgba(150, 250, 235, 0.37);
+    background-color: rgba(75, 78, 78, 0.567);
     background-blend-mode: overlay;
 
- 
+    img {
+        width: 100%;
+        box-shadow: rgb(255, 255, 255) 0px 0px 10px 0.1px;
+
+    }
+
+    .cardAbout {
+        h2 {
+            font-family: 'Yatra One', cursive;
+        }
+    }
 }

@@ -4,12 +4,88 @@
   position: relative;
   height: 100vh;
   overflow: hidden;
-  background-image: url(https://images.pexels.com/photos/747079/pexels-photo-747079.jpeg);
+  background-image: url(../../../../assets/images/heroBG2.jpg);
   background-size: cover;
-  background-color: rgba(21, 118, 228, 0.452);
   background-blend-mode: multiply;
   background-attachment: fixed;
- 
+
+  .home {
+    padding-top: 10rem;
+    text-align: center;
+    gap: 2rem;
+    flex-direction: column;
+
+    .mainText {
+      h1 {
+        font-weight: bold;
+        font-size: 40px;
+        font-family: 'Berkshire Swash', cursive;
+        letter-spacing: 2px;
+      }
+    }
+
+    .homeText {
+      color: black;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 2.5rem;
+    }
+
+    .homeImages {
+      width: 100%;
+      margin: 1rem auto 0;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border-radius: 5rem;
+
+      .videoDiv {
+        width: 45%;
+
+        .video {
+          border-radius: 16rem;
+        }
+      }
+
+      .plane {
+        position: absolute;
+        width: 50%;
+        top: -15%;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .home {
+      padding-top: 6rem;
+
+      .mainText {
+        h1 {
+          font-size: 32px;
+        }
+      }
+
+      .homeText {
+        font-size: 18px;
+        line-height: 2rem;
+      }
+
+      .homeImages {
+        .videoDiv {
+          width: 70%;
+        }
+
+        .plane {
+          width: 80%;
+          top: -10%;
+        }
+      }
+    }
+  }
+}
+
+
+
 
   .hero-section__container {
     background-image: var(--gradient-background);
@@ -72,4 +148,3 @@
       }
     }
   }
-}

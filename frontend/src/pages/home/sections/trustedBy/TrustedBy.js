@@ -1,57 +1,117 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ButtonEM from "../../../../components/ButtonEM/ButtonEM";
+import "./trustedBy.scss";
 
 function TrustedBy() {
+
+
   return (
     <section className=".trusted-by">
-      <section className="py-10 bg-gray-50 sm:py-16 lg:py-24">
-        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="grid items-center grid-cols-2 gap-10 sm:gap-y-16 sm:grid-cols-3 xl:grid-cols-6">
-            <div>
+      <section className=" py-4 ">
+        <div class="slider ">
+          <div class="slide-track">
+            <div class="slide ">
               <img
-                className="object-contain w-auto mx-auto h-14"
-                src="https://cdn.rareblocks.xyz/collection/celebration/images/logos/1/logo-1.png"
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
+                height="100"
+                width="250"
                 alt=""
               />
             </div>
-
-            <div>
+            <div class="slide">
               <img
-                className="object-contain w-auto mx-auto h-14"
-                src="https://cdn.rareblocks.xyz/collection/celebration/images/logos/1/logo-2.png"
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
+                height="100"
+                width="250"
                 alt=""
               />
             </div>
-
-            <div>
+            <div class="slide">
               <img
-                className="object-contain w-auto mx-auto h-14"
-                src="https://cdn.rareblocks.xyz/collection/celebration/images/logos/1/logo-3.png"
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
+                height="100"
+                width="250"
                 alt=""
               />
             </div>
-
-            <div>
+            <div class="slide">
               <img
-                className="object-contain w-auto mx-auto h-14"
-                src="https://cdn.rareblocks.xyz/collection/celebration/images/logos/1/logo-4.png"
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png"
+                height="100"
+                width="250"
                 alt=""
               />
             </div>
-
-            <div>
+            <div class="slide">
               <img
-                className="object-contain w-auto mx-auto h-14"
-                src="https://cdn.rareblocks.xyz/collection/celebration/images/logos/1/logo-5.png"
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
+                height="100"
+                width="250"
                 alt=""
               />
             </div>
-
-            <div>
+            <div class="slide">
               <img
-                className="object-contain w-auto mx-auto h-14"
-                src="https://cdn.rareblocks.xyz/collection/celebration/images/logos/1/logo-6.png"
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
+                height="100"
+                width="250"
+                alt=""
+              />
+            </div>
+            <div class="slide">
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png"
+                height="100"
+                width="250"
+                alt=""
+              />
+            </div>
+            <div class="slide">
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
+                height="100"
+                width="250"
+                alt=""
+              />
+            </div>
+            <div class="slide">
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
+                height="100"
+                width="250"
+                alt=""
+              />
+            </div>
+            <div class="slide">
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
+                height="100"
+                width="250"
+                alt=""
+              />
+            </div>
+            <div class="slide">
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png"
+                height="100"
+                width="250"
+                alt=""
+              />
+            </div>
+            <div class="slide">
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
+                height="100"
+                width="250"
+                alt=""
+              />
+            </div>
+            <div class="slide">
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
+                height="100"
+                width="250"
                 alt=""
               />
             </div>
@@ -108,9 +168,8 @@ function TrustedBy() {
                   Find the cheapest flight within secondes !
                 </h2>
                 <p class="mt-6 text-lg leading-relaxed text-gray-600">
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                  amet sint. Velit officia conse duis enim velit mollit.
-                  Exercitation veniam.
+                  Traveling is a journey that expands horizons, ignites
+                  curiosity, and fills the soul with unforgettable experiences.
                 </p>
                 <Link to="/planing" className="button-link">
                   <ButtonEM />

@@ -1,11 +1,12 @@
 import React from 'react'
-import './Button.scss'
+import '../Button/Button.scss'
+
 
 
 
 function ButtonMN() {
   return (
-    <button>
+    <button className='buttonImpo'>
         More News
     </button>
   )

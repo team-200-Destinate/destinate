@@ -1,11 +1,12 @@
 import React from 'react'
-import './Button.scss'
+import '../Button/Button.scss'
+
 
 
 
 function ButtonEM() {
   return (
-    <button>
+    <button className='buttonImpo'>
         Explore more
     </button>
   )
