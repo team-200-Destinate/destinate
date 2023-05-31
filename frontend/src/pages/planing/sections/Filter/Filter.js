@@ -9,31 +9,52 @@ const Filter = ({ dataChanged, destinateCity, setCityImg, setIsEmpty, setHotelIn
   const [destinationCity, setDestinationCity] = useState('');
   const [userDate, setUserDate] = useState('');
 
+  const getCityFullName = (cityCode) => {
+    switch (cityCode) {
+      case 'NYC':
+        return 'New York City';
+      case 'SFO':
+        return 'San Francisco';
+      case 'LON':
+        return 'London';
+      case 'PAR':
+        return 'Paris';
+      case 'BER':
+        return 'Berlin';
+      case 'TOK':
+        return 'Tokyo';
+      case 'ROM':
+        return 'Rome';
+      case 'SYD':
+        return 'Sydney';
+      case 'AMS':
+        return 'Amsterdam';
+      case 'TOR':
+        return 'Toronto';
+      default:
+        return 'Unknown City';
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      const fullDestinationCity = getCityFullName(destinationCity); // Call the getCityFullName function to get the full city name
+
       const response = await axios.get(
         `http://localhost:5011/flight-search?originCode=${currentCity}&destinationCode=${destinationCity}&dateOfDeparture=${userDate}`
       );
 
       dataChanged(response.data);
-      getHotelData(desCity);
+
+      const hotelResponse = await axios.get(`https://destinate-production.up.railway.app/hotels/${fullDestinationCity}`);
+      setHotelInfo(hotelResponse.data);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const getHotelData = async (city) => {
-    try {
-      const response = await axios.get(`https://destinate-production.up.railway.app/hotels/london`);
-      setHotelInfo(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  console.log('filter2 ' + desCity);
 
   return (
     <section className='filter-section'>
