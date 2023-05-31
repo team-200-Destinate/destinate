@@ -9,21 +9,30 @@ function News() {
   const [newsData, setNewsData] = useState([]);
 
   const newsApiUrl = process.env.REACT_APP_NEWS_API_URL;
-  const newsApiKey = process.env.REACT_APP_NEWS_API_KEY;
-
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${newsApiUrl}&apiKey=${newsApiKey}`);
-        setNewsData(response.data.articles.slice(0, 3));
+        const response = await axios.get(newsApiUrl);
+        setNewsData(response.data.data.slice(1, 4));
       } catch (error) {
         console.error("Error fetching news data:", error);
       }
     };
-  
+
     fetchData();
   }, []);
+
+  const getDefaultImageUrl = () => {
+    return "https://images.pexels.com/photos/2792025/pexels-photo-2792025.jpeg?auto=compress&cs=tinysrgb&w=600";
+  };
+
+  const truncateDescription = (description, maxLength) => {
+    if (description.length > maxLength) {
+      return description.slice(0, maxLength) + "...";
+    }
+    return description;
+  };
 
   return (
     <section className="news-section">
@@ -36,7 +45,7 @@ function News() {
               className="max-w-lg mx-auto shadow-lg flex flex-col bg-slate-50 rounded-lg"
             >
               <img
-                src={news.urlToImage}
+                src={news.image || getDefaultImageUrl()}
                 alt={news.title}
                 className="w-full h-60 object-cover rounded-t-lg"
               />
@@ -44,7 +53,7 @@ function News() {
                 <div className="px-6 py-4">
                   <div className="font-bold text-xl mb-2">{news.title}</div>
                   <p className="text-gray-700 text-base">
-                    {news.description.slice(0, 50)}...
+                    {truncateDescription(news.description, 50)}
                   </p>
                 </div>
                 <div className="px-6 pb-4">

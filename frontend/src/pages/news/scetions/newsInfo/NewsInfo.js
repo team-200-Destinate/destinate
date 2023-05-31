@@ -6,19 +6,19 @@ import ButtonRM from "../../../../components/ButtonRM/ButtonRM";
 function NewsInfo() {
   const [newsData, setNewsData] = useState([]);
 
+const newsApiUrl = process.env.REACT_APP_NEWS_API_URL;
+
   useEffect(() => {
-    const fetchNewsData = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://newsapi.org/v2/everything?q=tourism&apiKey=282f8276459c4589aa2119c793f455d9"
-        );
-        setNewsData(response.data.articles);
+        const response = await axios.get(newsApiUrl);
+        setNewsData(response.data.data.slice(1));
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching news data:", error);
       }
     };
 
-    fetchNewsData();
+    fetchData();
   }, []);
 
   const getDefaultImageUrl = () => {
@@ -26,14 +26,14 @@ function NewsInfo() {
   };
 
   return (
-    <section className="newsInfo grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pt-14 px-4 ">
+    <section className="newsInfo grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pt-14 px-4 pb-14 ">
       {newsData.map((news, index) => (
         <div
           key={index}
           className="max-w-md mx-auto shadow-lg flex flex-col bg-slate-50 rounded-lg"
         >
           <img
-            src={news.urlToImage || getDefaultImageUrl()}
+            src={news.image || getDefaultImageUrl()}
             alt={news.title}
             className="w-full h-60 object-cover rounded-t-lg"
           />
