@@ -1,0 +1,80 @@
+.tours-sections{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // text-align: center;
+
+    h3{
+        font-size: 40px;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin: 80px 0px;
+    }
+
+    .card{
+        width: 80%;
+        background-color: #C2B394;
+        display: flex;
+        align-items: center;
+        margin-bottom: 100px;
+
+        &-img{
+            width: 20%;
+            height: 300px;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &-body{
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            padding: 30px;
+            padding-left: 90px;
+            
+            h4{
+                font-size: 35px;
+            }
+            
+            .city-info{
+                display: flex;
+                font-size: 21px;
+                gap: 50px;
+
+                .strong-text{
+                    font-weight: 700;
+                }
+
+                &_1{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+                &_2{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+            }
+
+        }
+
+        &-button{
+            margin-top: 180px;
+            margin-left: 60px;
+
+            button{
+                padding: 0;
+                width: 80px;
+                height: 50px;
+            }
+        }
+    }
+}

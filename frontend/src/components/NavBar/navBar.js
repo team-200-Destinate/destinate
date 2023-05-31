@@ -30,10 +30,15 @@ const NavBar = () => {
       <div className="links-container">
         <Link to="/" className="link">Home</Link>
         <Link to="/about" className="link">About Us</Link>
+
+        <Link to="/planning" className="link">planing</Link>
+        
+
         <Link to="/news" className="link">News</Link>
         <Link to="/planing" className="link">planing</Link>
         <Link to="/" className="link">plan</Link>
         <Link to="/contact" className="link">Contact Us</Link>
+
       </div>
     </nav>
   );
