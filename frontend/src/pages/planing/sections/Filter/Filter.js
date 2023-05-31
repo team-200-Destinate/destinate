@@ -43,7 +43,7 @@ const Filter = ({ dataChanged, destinateCity, setCityImg, setIsEmpty, setHotelIn
       const fullDestinationCity = getCityFullName(destinationCity); // Call the getCityFullName function to get the full city name
 
       const response = await axios.get(
-        `http://localhost:5011/flight-search?originCode=${currentCity}&destinationCode=${destinationCity}&dateOfDeparture=${userDate}`
+        `http://https://destinate-production.up.railway.app/flight-search?originCode=${currentCity}&destinationCode=${destinationCity}&dateOfDeparture=${userDate}`
       );
 
       dataChanged(response.data);
