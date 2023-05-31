@@ -10,6 +10,7 @@ import Home from "./pages/home/home";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import News from "./pages/news/News";
+import Plane from "./pages/plans/plans";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/news" element={<News />} />
+        <Route path='/plan' element={<Plane />} />
 
       </Routes>
     </Layout>

@@ -43,6 +43,9 @@ const Filter = ({ dataChanged, destinateCity, setCityImg, setIsEmpty, setHotelIn
       const fullDestinationCity = getCityFullName(destinationCity); // Call the getCityFullName function to get the full city name
 
       const response = await axios.get(
+
+        
+
         `https://destinate-production.up.railway.app/flight-search?originCode=${currentCity}&destinationCode=${destinationCity}&dateOfDeparture=${userDate}`
       );
 
