@@ -6,17 +6,6 @@ import './style.scss';
 
 function Hotel(name, photoUrl, rating) {
   return (
-    // <Card style={{ width: '18rem' }} className='gotelCard'>
-    //   <Card.Img variant="top" src={img} />
-    //   <Card.Body>
-    //     <Card.Title>Hotel Name</Card.Title>
-    //     <Card.Text>
-    //       Some quick example text to build on the card title and make up the
-    //       bulk of the card's content.
-    //     </Card.Text>
-    //     <Button variant="primary"></Button>
-    //   </Card.Body>
-    // </Card>
 
     <>
         <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pt-14">
