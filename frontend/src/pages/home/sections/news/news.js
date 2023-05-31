@@ -9,12 +9,17 @@ function News() {
   const [newsData, setNewsData] = useState([]);
 
   const newsApiUrl = process.env.REACT_APP_NEWS_API_URL;
+  const apiKey = process.env.REACT_APP_NEWS_API_KEY;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(newsApiUrl);
-        setNewsData(response.data.data.slice(1, 4));
+        const response = await axios.get(newsApiUrl, {
+          headers: {
+            "x-api-key": apiKey,
+          },
+        });
+        setNewsData(response.data.articles.slice(0, 3));
       } catch (error) {
         console.error("Error fetching news data:", error);
       }
@@ -45,7 +50,7 @@ function News() {
               className="max-w-lg mx-auto shadow-lg flex flex-col bg-slate-50 rounded-lg"
             >
               <img
-                src={news.image || getDefaultImageUrl()}
+                src={news.media || getDefaultImageUrl()}
                 alt={news.title}
                 className="w-full h-60 object-cover rounded-t-lg"
               />
@@ -53,12 +58,12 @@ function News() {
                 <div className="px-6 py-4">
                   <div className="font-bold text-xl mb-2">{news.title}</div>
                   <p className="text-gray-700 text-base">
-                    {truncateDescription(news.description, 50)}
+                    {truncateDescription(news.summary, 50)}
                   </p>
                 </div>
                 <div className="px-6 pb-4">
                   <a
-                    href={news.url}
+                    href={news.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block py-2 px-4 rounded-full"

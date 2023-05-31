@@ -6,13 +6,18 @@ import ButtonRM from "../../../../components/ButtonRM/ButtonRM";
 function NewsInfo() {
   const [newsData, setNewsData] = useState([]);
 
-const newsApiUrl = process.env.REACT_APP_NEWS_API_URL;
+  const newsApiUrl = process.env.REACT_APP_NEWS_API_URL;
+  const apiKey = process.env.REACT_APP_NEWS_API_KEY;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(newsApiUrl);
-        setNewsData(response.data.data.slice(1));
+        const response = await axios.get(newsApiUrl, {
+          headers: {
+            "x-api-key": apiKey,
+          },
+        });
+        setNewsData(response.data.articles.slice(1));
       } catch (error) {
         console.error("Error fetching news data:", error);
       }
@@ -26,14 +31,14 @@ const newsApiUrl = process.env.REACT_APP_NEWS_API_URL;
   };
 
   return (
-    <section className="newsInfo grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pt-14 px-4 pb-14 ">
+    <section className="newsInfo grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pt-14 px-4 pb-14">
       {newsData.map((news, index) => (
         <div
           key={index}
           className="max-w-md mx-auto shadow-lg flex flex-col bg-slate-50 rounded-lg"
         >
           <img
-            src={news.image || getDefaultImageUrl()}
+            src={news.media || getDefaultImageUrl()}
             alt={news.title}
             className="w-full h-60 object-cover rounded-t-lg"
           />
@@ -41,12 +46,12 @@ const newsApiUrl = process.env.REACT_APP_NEWS_API_URL;
             <div className="px-6 py-4">
               <div className="font-bold text-xl mb-2">{news.title}</div>
               <p className="text-gray-700 text-base">
-                {news.description.slice(0, 200)}...
+                {news.summary.slice(0, 200)}...
               </p>
             </div>
             <div className="px-6 pb-4">
               <a
-                href={news.url}
+                href={news.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block font-bold py-2 px-4 rounded-full"
