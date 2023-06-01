@@ -23,7 +23,7 @@ app.use(cors({
   origin: 'http://localhost:4200',
 }));
 app.use((req, res, next) => {
-  const allowedOrigins = ['http://localhost:3000', 'http://localhost:4200'];
+  const allowedOrigins = ['http://localhost:3000', 'http://localhost:4200','https://cozy-heliotrope-daf0f8.netlify.app'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
