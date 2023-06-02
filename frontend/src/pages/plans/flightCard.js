@@ -1,5 +1,5 @@
 import React from "react";
-import renderStars from "./stars";
+import renderStars from "./stars.js";
 import "./plans.css";
 const FlightCard = ({ flight, resultData, onDeleteFlight }) => {
   const matchingResult = resultData.find(
