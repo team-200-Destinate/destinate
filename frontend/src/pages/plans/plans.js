@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FlightCard from "./flightCard";
+import FlightCard from "./flightCard.js";
 import "./plans.css";
 
 const Plane = () => {
