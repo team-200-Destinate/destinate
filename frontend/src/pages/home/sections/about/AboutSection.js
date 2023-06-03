@@ -28,7 +28,7 @@ function AboutSection() {
               <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl ">
                 Destinate... Your Journey Starts Here
               </h2>
-              <p className="mt-4 text-xl leading-relaxed text-blue-950 font-semibold ">
+              <p className="mt-4 text-xl leading-relaxed text-white font-semibold ">
                 Our project is a travel app that aims to provide users with
                 seamless travel planning and booking experiences. With a great
                 team behind it, we are dedicated to delivering high-quality

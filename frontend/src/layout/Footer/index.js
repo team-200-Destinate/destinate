@@ -84,7 +84,7 @@ function Footer() {
                     <Link to="/about">About us</Link>
                   </li>
                   <li>
-                    <Link to="/planing">Planing</Link>
+                    <Link to="/planning">Planning</Link>
                   </li>
                   <li>
                     <Link to="/news">News</Link>
@@ -94,6 +94,9 @@ function Footer() {
                   </li>
                   <li>
                     <Link to="/plans">Plans</Link>
+                  </li>
+                  <li>
+                    <Link to="/contact">customer support</Link>
                   </li>
                 </ul>
               </div>
@@ -127,7 +130,7 @@ function Footer() {
           <div className="row">
             <div className="col-xl-6 col-lg-6 text-center text-lg-left">
               <div className="copyright-text">
-                <p>Copyright &copy; 2023, All Right Reserved</p>
+                <p>Copyright &copy; 2023, All Right Reserved, Team 200</p>
               </div>
             </div>
             <div className="col-xl-6 col-lg-6 d-none d-lg-block text-right">

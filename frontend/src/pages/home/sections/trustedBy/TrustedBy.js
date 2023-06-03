@@ -171,7 +171,7 @@ function TrustedBy() {
                   Traveling is a journey that expands horizons, ignites
                   curiosity, and fills the soul with unforgettable experiences.
                 </p>
-                <Link to="/planing" className="button-link">
+                <Link to="/planning" className="button-link">
                   <ButtonEM />
                 </Link>
               </div>

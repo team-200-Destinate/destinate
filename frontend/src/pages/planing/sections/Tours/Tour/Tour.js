@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.scss";
 // import img from '../../../../../assets/images/heroIMG.jpg';
-import Button from "../../../../../components/Button5/Button";
+import ButtonADD from "../../../../../components/ButtonADD/ButtonADD";
 import axios from "axios";
 
 function Tour({
@@ -126,24 +126,24 @@ function Tour({
         </div>
         <div className="ticket-middle">
           <div className="passenger-name">
-            <div className="item">price</div>
-            <div className="smdetail">{price}$</div>
+            <div className="item text-gray-200">price</div>
+            <div className="smdetail text-white">{price}$</div>
           </div>
           <div className="gate">
-            <div className="item">gate</div>
-            <div className="lgdetail">{randomGate}</div>
+            <div className="item text-gray-200">gate</div>
+            <div className="lgdetail text-white">{randomGate}</div>
           </div>
           <div className="flight">
-            <div className="item">flight</div>
-            <div className="lgdetail">{randomCode}</div>
+            <div className="item text-gray-200">flight</div>
+            <div className="lgdetail text-white">{randomCode}</div>
           </div>
-          <div className="destination">
+          <div className="destination text-gray-200 ">
             <div className="item">destination</div>
-            <div className="smdetail">{destinatecIty}</div>
+            <div className="smdetail text-white">{destinatecIty}</div>
           </div>
           <div className="group">
-            <div className="item">group</div>
-            <div className="smdetail">3</div>
+            <div className="item text-gray-200 ">group</div>
+            <div className="smdetail text-white">3</div>
           </div>
         </div>
         <div className="ticket-right">
@@ -167,7 +167,7 @@ function Tour({
         </div>
       </div>
       <div className="Ticket-button p-3 flex justify-center">
-        <Button DBObj={DBObj} />
+        <ButtonADD DBObj={DBObj} />
       </div>
     </div>
   );

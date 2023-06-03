@@ -1,25 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Toplogo from '../../assets/images/logoSVG.svg';
-import './style.scss';
-import { useEffect } from 'react';
-
+import React from "react";
+import { Link } from "react-router-dom";
+import Toplogo from "../../assets/images/logoSVG.svg";
+import "./style.scss";
+import { useEffect } from "react";
 
 const NavBar = () => {
   useEffect(() => {
     const handleScroll = () => {
-      const headerNav = document.querySelector('.header-nav');
+      const headerNav = document.querySelector(".header-nav");
       if (window.scrollY > 300) {
-        headerNav.classList.add('scrolled');
+        headerNav.classList.add("scrolled");
       } else {
-        headerNav.classList.remove('scrolled');
+        headerNav.classList.remove("scrolled");
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
   return (
@@ -28,21 +27,28 @@ const NavBar = () => {
         <img src={Toplogo} alt="Logo" className="Toplogo" />
       </div>
       <div className="links-container">
-        <Link to="/" className="link">Home</Link>
-        <Link to="/about" className="link">About Us</Link>
+        <Link to="/" className="link">
+          Home
+        </Link>
 
-        <Link to="/planning" className="link">planning</Link>
-        
+        <Link to="/planning" className="link">
+          planning
+        </Link>
 
-        <Link to="/news" className="link">News</Link>
+        <Link to="/plan" className="link">
+          plan
+        </Link>
 
-        
-        <Link to="/plan" className="link">plan</Link>
+        <Link to="/news" className="link">
+          News
+        </Link>
 
-       
-
-        <Link to="/contact" className="link">Contact Us</Link>
-
+        <Link to="/about" className="link">
+          About Us
+        </Link>
+        <Link to="/contact" className="link">
+          Contact Us
+        </Link>
       </div>
     </nav>
   );
