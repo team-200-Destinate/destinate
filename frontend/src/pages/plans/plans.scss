@@ -1,0 +1,13 @@
+.plans{
+    .flight-card {
+        transition: transform 0.3s ease;
+  
+        &:hover {
+            transform: scale(1.05);}
+              }
+
+              .hotelCard{
+                background: #24808d5f;
+              }
+
+    }

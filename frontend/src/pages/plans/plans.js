@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FlightCard from "./flightCard.js";
-import "./plans.css";
+import "./plans.scss";
 
 const Plane = () => {
   const [flightData, setFlightData] = useState([]);
@@ -66,22 +66,24 @@ const Plane = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 my-32">
-      <h1 className="text-2xl font-bold mb-4">
-        Flight Confirmations and Results
-      </h1>
+    <section className="plans">
+    <div className="container mx-auto px-4 my-32 ">
+      <h1 className="text-2xl font-bold mb-4 text-center">Flight Confirmations and Results</h1>
       <div className="row">
         {flightData.map((flight) => (
-          <div className="col-md-4" key={flight.id}>
-            <FlightCard
-              flight={flight}
-              resultData={resultData}
-              onDeleteFlight={handleDeleteFlight}
-            />
+          <div className="p-5" key={flight.id}>
+            <div className="flight-card " >
+              <FlightCard
+                flight={flight}
+                resultData={resultData}
+                onDeleteFlight={handleDeleteFlight}
+              />
+            </div>
           </div>
         ))}
       </div>
     </div>
+    </section>
   );
 };
 

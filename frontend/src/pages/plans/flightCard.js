@@ -1,6 +1,6 @@
 import React from "react";
 import renderStars from "./stars.js";
-import "./plans.css";
+import "./plans.scss";
 const FlightCard = ({ flight, resultData, onDeleteFlight }) => {
   const matchingResult = resultData.find(
     (result) => result.flight_id === flight.id
@@ -20,11 +20,16 @@ const FlightCard = ({ flight, resultData, onDeleteFlight }) => {
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md">
+    <div className="bg-gray-300 p-3 rounded-lg shadow-md  ">
       <img className="w-8 h-8 mr-2" src="logo.png" alt="Logo" />
-      <div className="flex items-center mb-2">
+      {/*  */}
+      <div className="flex justify-around  mb-2">
+      {/* <div className="flex items-center mb-2">
         <div>Source: {flight.source}</div>
-      </div>
+      </div> */}
+
+      <div className="space-y-2 flex flex-col justify-around items-center p-2 ">
+      <div className="mb-2 font-semibold">Full Duration: {flight.duration}
       <div className="mb-2">
         Flight Price :{" "}
         <strong
@@ -34,37 +39,39 @@ const FlightCard = ({ flight, resultData, onDeleteFlight }) => {
           ${flight.price}
         </strong>
       </div>
-      <div className="mb-2">Duration: {flight.duration}</div>
-      <div className="space-y-2">
+      </div>
         {flight.segments.map((segment) => (
-          <div key={segment.number}>
+          <div key={segment.number} className="flex justify-around ">
             <p>
-              Departure: {segment.departure.iataCode} - {segment.departure.at}
+              Departure: {segment.departure.iataCode} - {segment.departure.at} ||
             </p>
             <p>
-              Arrival: {segment.arrival.iataCode} - {segment.arrival.at}
+              Arrival: {segment.arrival.iataCode} - {segment.arrival.at} || 
             </p>
             <p>Duration: {segment.duration}</p>
           </div>
         ))}
       </div>
       {matchingResult && (
-        <>
-          <div className="text-lg font-bold mb-2 mt-4">
-            Hotel Name: {matchingResult.hotel_name}
+        <div className="flex flex-col items-center border-2 border-gray-300 rounded-md p-2 hotelCard">
+          <div className="text-lg font-bold mb-2 mt-4 ">
+            {matchingResult.hotel_name}
           </div>
           <div className="mb-2">Hotel Price: {matchingResult.hotel_price}</div>
 
           <img
-            className="w-full h-auto mb-2"
+            className="w-60 h-60 mb-2 rounded-md object-cover"
             src={matchingResult.hotel_photo_url}
             alt="Hotel"
           />
           <div className="flex items-center">
             {renderStars(matchingResult.hotel_rating)}
           </div>
-        </>
+        </div>
       )}
+      </div>
+        {/*  */}
+
       <div className="flex justify-between items-center mt-4">
         <button
           className="bg-red-500 text-white px-4 py-2 rounded-lg"
