@@ -6,16 +6,23 @@
     background-color: var(--offwhite-color);
     text-align: center;
 
+    
+
     h3{
         font-size: 40px;
         font-weight: 700;
         color: var(--secondary-color);
         margin: 30px 0px;
+        text-transform: uppercase;
     }
 
     .container {
         display: grid;
         padding: 20px;
+        transition: transform 0.3s ease;
+  
+    &:hover {
+    transform: scale(1.05);}
       }
       
       .ticket {
@@ -40,7 +47,7 @@
       }
       
       .item {
-        color: #a3a4a4;
+        color: #1c1c1c;
         font-family: "Average Sans", sans-serif;
         font-size: 14px;
         margin: 20px auto 0 auto;
@@ -48,14 +55,14 @@
       }
       
       .lgdetail {
-        color: #616161;
+        color: #454545;
         font-family: "Average Sans", sans-serif;
         font-size: 32px;
         text-transform: uppercase;
       }
       
       .smdetail {
-        color: #616161;
+        color: #2a2a2a;
         font-family: "Average Sans", sans-serif;
         font-size: 20px;
         text-transform: capitalize;
@@ -96,7 +103,7 @@
       
       /*start ticket-middle*/
       .ticket-middle {
-        background-color: #b7cdff;
+        background-color: var(--secondary-color);
         border-right: 1.7px dotted black;
         clip-path: polygon(30% 0, 100% 0, 100% 100%, 0 100%);
         display: grid;

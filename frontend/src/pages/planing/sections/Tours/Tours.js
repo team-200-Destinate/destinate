@@ -5,13 +5,18 @@ import "./style.scss";
 function Tours({ flightInfo, setDestinateCity, cityImg, isEmpty, setDesCity }) {
   return (
     <section className="tours-sections">
-      <h3>Best matches</h3>
+      {flightInfo && flightInfo.length > 0 ? (
+        <h3>Best matches</h3>
+      ) : (
+        <h4 className="pt-10">
+          Please first select your current city, the destination city, and the date ☝
+        </h4>
+      )}
 
       {isEmpty ? (
-        <h1>
-          Please first select your current city, the destinate city and the date
-          ☝
-        </h1>
+        <h4>
+          Please first select your current city, the destination city, and the date ☝
+        </h4>
       ) : (
         flightInfo &&
         flightInfo.map((item) => (

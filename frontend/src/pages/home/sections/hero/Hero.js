@@ -22,7 +22,7 @@ function Hero() {
 
       <div className="homeImages flex">
         <div className="videoDiv">
-          <video src="https://cdn.pixabay.com/vimeo/245530642/drone-flight-13132.mp4?width=1280&hash=0ce1b23ffd859bbcd358ca3ea45533de4b82672f" autoPlay muted loop className="video"></video>
+          <video src="https://cdn.pixabay.com/vimeo/200092486/mountains-7418.mp4?width=640&hash=402dcd746db8c08e387efff3bbc6131d2f3df984" autoPlay muted loop className="video"></video>
         </div>
         <img src={airplane} className="plane" alt="" />
       </div>

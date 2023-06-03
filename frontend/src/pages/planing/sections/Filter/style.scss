@@ -9,6 +9,7 @@
     background-size: cover;
     background-position: center;
     background-blend-mode: multiply;
+    overflow: hidden;
 
     &_content{
         display: flex;
@@ -28,9 +29,6 @@
             align-items: center;
             gap: 50px;
 
-            button{
-                background-color: var(--lightorange-color);
-            }
         }
     
         .form-content{

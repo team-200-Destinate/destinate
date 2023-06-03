@@ -1,6 +1,5 @@
 import React from "react";
 import "./infoAbout.scss";
-import { FaUsers, FaBookOpen } from "react-icons/fa";
 
 function InfoAbout() {
   const team = [
@@ -11,37 +10,34 @@ function InfoAbout() {
       title: "Desinger/coder",
       desc: "A great team member and hard working very glad she is part of the team.",
       linkedin: "https://www.linkedin.com/in/sham-ahmad-b75984250/",
-     
+
       github: "https://github.com/orgs/team-200-Destinate/people/ShamAhmad2022",
     },
     {
-      avatar:
-        "https://avatars.githubusercontent.com/u/101422079?v=4",
+      avatar: "https://avatars.githubusercontent.com/u/101422079?v=4",
       name: "Mohammed Attala",
       title: "CIS engineer/coder",
       desc: "A great team member and hard working very glad he is part of the team.",
       linkedin: "https://www.linkedin.com/in/mohammad-attallah-01601b1a4/",
-     
+
       github: "https://github.com/mohAttallah",
     },
     {
-      avatar:
-        "https://avatars.githubusercontent.com/u/92924350?v=4",
+      avatar: "https://avatars.githubusercontent.com/u/92924350?v=4",
       name: "Saleh Almashni",
       title: "Software engineer/coder/Lead desinger",
       desc: "A very skilled and  helpful dude that i am glad he is on our team.",
       linkedin: "https://www.linkedin.com/in/saleh-almashni/",
-     
+
       github: "https://github.com/saleh2001k:void(0)",
     },
     {
-      avatar:
-        "https://avatars.githubusercontent.com/u/67604121?v=4",
+      avatar: "https://avatars.githubusercontent.com/u/67604121?v=4",
       name: "Laith Saleem",
       title: "Coder/Engineer",
       desc: "A great team member and hard working very glad he is part of the team.",
       linkedin: "https://www.linkedin.com/in/laith-s-757591112/",
-     
+
       github: "https://github.com/Laith-Vlad",
     },
   ];
@@ -58,17 +54,18 @@ function InfoAbout() {
                   alt=""
                 />
               </div>
-
-              
             </div>
 
             <div className="flex flex-col justify-between md:py-5">
               <blockquote>
                 <p className="text-2xl leading-relaxed text-black">
-                Welcome to our aspiring team of young developers dedicated to creating a reliable and exceptional service for travelers like you. At our core, we are driven by a passion for innovation and a deep understanding of the evolving needs of modern-day adventurers.</p>
+                  Welcome to our aspiring team of young developers dedicated to
+                  creating a reliable and exceptional service for travelers like
+                  you. At our core, we are driven by a passion for innovation
+                  and a deep understanding of the evolving needs of modern-day
+                  adventurers.
+                </p>
               </blockquote>
-
-
             </div>
           </div>
         </div>
@@ -93,21 +90,24 @@ function InfoAbout() {
                   />
                 </div>
 
-                <div className="absolute bottom-0 -left-16">
-               
-                </div>
+                <div className="absolute bottom-0 -left-16"></div>
               </div>
             </div>
 
             <div className="md:order-1">
               <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
-                Our vision 
+                Our vision
               </h2>
               <p className="mt-4 text-base leading-relaxed text-gray-600">
-              At Destinate, our vision is to redefine the way people experience travel. We are driven by a relentless commitment to providing our customers with the best and most effective travel solutions available. Through innovative technologies, personalized experiences, and a dedicated team, we aim to transform the way you explore the world. Join us on this exciting journey as we strive to make travel effortless, enriching, and unforgettable. 
+                At Destinate, our vision is to redefine the way people
+                experience travel. We are driven by a relentless commitment to
+                providing our customers with the best and most effective travel
+                solutions available. Through innovative technologies,
+                personalized experiences, and a dedicated team, we aim to
+                transform the way you explore the world. Join us on this
+                exciting journey as we strive to make travel effortless,
+                enriching, and unforgettable.
               </p>
-
-
             </div>
           </div>
         </div>
@@ -116,21 +116,55 @@ function InfoAbout() {
       {/*  */}
       <div className="vew"></div>
       {/*  */}
-      <section className="team py-14">
+
+      <section className="ourteam">
+          <div className="max-w-xl">
+            <h1 className="text-gray-800 text-3xl font-semibold sm:text-4xl text-center p-5 ">
+              Meet our talent team
+            </h1>
+            <p className="text-gray-600 mt-3"></p>
+          </div>
+        <div className="main flex">
+
+          {team.map((member, index) => (
+            <div className="profile-card" key={index}>
+              <div className="img">
+                <img src={member.avatar} alt="Profile" />
+              </div>
+              <div className="caption">
+                <h3>{member.name}</h3>
+                <p>{member.title}</p>
+                <p>{member.desc}</p>
+                <div className="social-links">
+                  <a href={member.linkedin}>
+                    <i className="fab fa-linkedin"></i>
+                  </a>
+                  <a href={member.github}>
+                    <i className="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </section>
+  );
+}
+
+export default InfoAbout;
+
+{
+  /* <section className="team py-14">
         <div className="max-w-screen-xl mx-auto px-4 md:px-8">
           <div className="max-w-xl">
             <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
               Meet our talent team
             </h3>
-            <p className="text-gray-600 mt-3">
-
-            </p>
+            <p className="text-gray-600 mt-3"></p>
           </div>
 
           <div class="relative">
-            {/* <img class="absolute top-0 left-0" src="https://picsum.photos/536/354" alt="Workplace" width="600" />
-
-<img class=" absolute top-0 left-0 mt-32 ml-40 hover:shadow-outline" src="https://picsum.photos/535/354" width="600" /> */}
           </div>
 
           <div className="mt-12 membres">
@@ -151,7 +185,6 @@ function InfoAbout() {
                     <p className="text-indigo-600">{item.title}</p>
                     <p className="text-gray-600 mt-2">{item.desc}</p>
                     <div className="mt-3 flex gap-4 text-gray-400">
-                     
                       <a href={item.github}>
                         <svg
                           className="w-5 h-5 duration-150 hover:text-gray-500"
@@ -199,9 +232,5 @@ function InfoAbout() {
             </ul>
           </div>
         </div>
-      </section>
-    </section>
-  );
+      </section> */
 }
-
-export default InfoAbout;
