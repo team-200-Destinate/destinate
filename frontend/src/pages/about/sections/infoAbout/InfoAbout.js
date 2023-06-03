@@ -5,7 +5,7 @@ function InfoAbout() {
   const team = [
     {
       avatar:
-        "https://cdn.discordapp.com/attachments/1111616935579373670/1113111212109086872/sham.png",
+        "https://cdn.discordapp.com/attachments/1111616935579373670/1114472949089579018/sham2.png",
       name: "Sham Jalal",
       title: "Desinger/coder",
       desc: "A great team member and hard working very glad she is part of the team.",
@@ -119,7 +119,7 @@ function InfoAbout() {
 
       <section className="ourteam">
           <div className="max-w-xl">
-            <h1 className="text-gray-800 text-3xl font-semibold sm:text-4xl text-center p-5 ">
+            <h1 className="text-gray-800 text-4xl font-semibold sm:text-4xl text-center p-5 ">
               Meet our talent team
             </h1>
             <p className="text-gray-600 mt-3"></p>
