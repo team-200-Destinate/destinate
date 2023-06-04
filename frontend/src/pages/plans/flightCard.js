@@ -43,7 +43,7 @@ const FlightCard = ({ flight, resultData, onDeleteFlight }) => {
         {flight.segments.map((segment) => (
           <div key={segment.number} className="flex justify-around ">
             <p>
-              Departure: {segment.departure.iataCode} - {segment.departure.at} ||
+              Departure: {segment.departure.iataCode} - {segment.departure.at} |
             </p>
             <p>
               Arrival: {segment.arrival.iataCode} - {segment.arrival.at} || 
