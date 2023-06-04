@@ -6,13 +6,15 @@ $animationSpeed: 40s;
 	100% { transform: translateX(calc(-250px * 7))}
 }
 
+
 .slider {
-  background: #000;
+
 	height: 100px;
 	margin: auto;
 	overflow:hidden;
 	position: relative;
 	width: auto;
+
 	
 	.slide-track {
 		animation: scroll $animationSpeed linear infinite;
@@ -22,9 +24,10 @@ $animationSpeed: 40s;
 	.slide {
 		height: 100px;
 		width: 250px;
-
 		img{
-			filter: grayscale(90%);
+			padding: 1px;
+
 		}
+		
 	}
 }
